@@ -49,4 +49,24 @@
     <servlet-name>HotelSearchServlet</servlet-name>
     <url-pattern>/HotelSearchServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddOrderServlet</display-name>
+    <servlet-name>AddOrderServlet</servlet-name>
+    <servlet-class>com.etc.servlet.AddOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddOrderServlet</servlet-name>
+    <url-pattern>/AddOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RoomListServlet</display-name>
+    <servlet-name>RoomListServlet</servlet-name>
+    <servlet-class>com.etc.servlet.RoomListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomListServlet</servlet-name>
+    <url-pattern>/RoomListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

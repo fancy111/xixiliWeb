@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.etc.entity.Hotel;
-import com.etc.service.HotelService;
-import com.etc.service.impl.HotelServiceImpl;
+import com.etc.entity.Room;
+import com.etc.service.RoomService;
+import com.etc.service.impl.RoomServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class HotelListServlet extends HttpServlet {
+public class RoomListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//设置输出内容类型
 		response.setContentType("text/html;charset=utf-8");
@@ -35,21 +34,21 @@ public class HotelListServlet extends HttpServlet {
 		//获取out输出对象---需要输出内容时加此句
 		PrintWriter out = response.getWriter();	
 		
-		//获得请求
-		System.out.println(">>>>>>getHotelList被请求！");
+		System.out.println("查找房间列表");
 		
-		String province = request.getParameter("province");
-		String city = request.getParameter("city");
-		String keyword = request.getParameter("keyword");
+		//接受参数
+		//String room_type = request.getParameter("room_type");
+		//int hotelID = Integer.parseInt(request.getParameter("hotelID"));
+		String room_type = "标准双人房";
+		int hotelID = 2;
 		
-		System.out.println("pro"+province);
-		System.out.println("city"+city);
-		System.out.println("keyword"+keyword);
+		System.out.println("room_type"+room_type);
+		System.out.println("hotelID"+hotelID);
 		
-		HotelService hotelService = new HotelServiceImpl();
-		List<Hotel> list = new ArrayList<Hotel>();
-		//list = hotelService.getHotelList("pro1","1city1","");
-		list = hotelService.getHotelList(province,city,keyword);
+		RoomService roomService = new RoomServiceImpl();
+		List<Room> list = new ArrayList<Room>();
+		
+		list = roomService.getRoomList(hotelID, room_type);
 		if(list == null)
 		{
 			System.out.println("列表为空!");
@@ -67,6 +66,7 @@ public class HotelListServlet extends HttpServlet {
 		}
 		out.flush();
 		out.close();
+		
 	}
 
 }

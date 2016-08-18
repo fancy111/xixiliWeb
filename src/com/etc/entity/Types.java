@@ -1,6 +1,8 @@
 package com.etc.entity;
 
-public class Types {
+import java.io.Serializable;
+
+public class Types implements Serializable {
 	//定义私有类型
 	private int hotelID;
 	private String room_type;

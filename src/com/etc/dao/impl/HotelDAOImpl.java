@@ -16,7 +16,7 @@ public class HotelDAOImpl implements HotelDAO {
 	//根据省份和城市获取酒店列表
 	@Override
 	public List<Hotel> findHotelList(String province,String city,String keyword) {
-		String sql = "select * from hotel where province = ? and city = ? and hotelname like ?";
+		String sql = "select * from hotel where province = ? and city = ? and realname like ?";
 		ResultSet rs = dbManager.execQuery(sql,province,city,"%"+keyword+"%");
 		if(rs==null)
 			return null;
@@ -61,7 +61,7 @@ public class HotelDAOImpl implements HotelDAO {
 		float[] com_level = new float[hotelList.size()];
 		int min,max;
 		
-		if(hotelList.size() == 0)
+		if(hotelList.size() <= 1)
 			return com_level;
 		
 		visitors[0] = hotelList.get(0).getVisitor_number();
@@ -80,6 +80,12 @@ public class HotelDAOImpl implements HotelDAO {
 			com_level[i] = (float) (per_num*0.3+hotelList.get(i).getComment_level()*0.4+hotelList.get(i).getSafe_level()*0.3);
 		}
 		return com_level;
+	}
+
+	//添加订单后增加酒店的入住人数加1
+	public boolean updateVisitor_num(int hotelID, int num) {
+		String sql = "update hotel set visitor_number=visitor_number+? where hotelID=?";
+		return dbManager.execUpdate(sql, num,hotelID)>0;
 	}
 
 }
