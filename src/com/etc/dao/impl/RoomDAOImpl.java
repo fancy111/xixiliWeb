@@ -34,4 +34,11 @@ public class RoomDAOImpl implements RoomDAO {
 		}
 	}
 
+	//把已经被提交的房间设为checked
+	@Override
+	public boolean setRoomChecked(int hotelID, String room_number) {
+		String sql = "update room set checked = true where hotelID=? and room_number=?";
+		return dbManager.execUpdate(sql, hotelID,room_number)>0;
+	}
+
 }
