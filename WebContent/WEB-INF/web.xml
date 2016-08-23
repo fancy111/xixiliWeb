@@ -69,4 +69,24 @@
     <servlet-name>RoomListServlet</servlet-name>
     <url-pattern>/RoomListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetPriceTrend</display-name>
+    <servlet-name>GetPriceTrend</servlet-name>
+    <servlet-class>com.etc.servlet.GetPriceTrend</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPriceTrend</servlet-name>
+    <url-pattern>/GetPriceTrend</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetPriceTrendServlet</display-name>
+    <servlet-name>GetPriceTrendServlet</servlet-name>
+    <servlet-class>com.etc.servlet.GetPriceTrendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPriceTrendServlet</servlet-name>
+    <url-pattern>/GetPriceTrendServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
